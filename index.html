@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mohammad’s flavour drinks</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Signika:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --orange: #FCAF50;
+      --mint: #A8E6CF;
+      --white: #FFFFFF;
+      --dark: #232D3F;
+      --light-mint: #F2FAF6;
+      --light-orange: #FFF8EE;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Signika', sans-serif;
+      background-color: var(--white);
+      color: var(--dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Header Navigation */
+    header {
+      background-color: var(--white);
+      padding: 1.25rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand-logo {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--dark);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .brand-dot {
+      width: 14px;
+      height: 14px;
+      background-color: var(--orange);
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    /* Hero Section - Starbucks inspired bold bubble backdrop */
+    .hero {
+      background: linear-gradient(135deg, var(--light-mint) 0%, var(--light-orange) 100%);
+      padding: 5rem 1.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 4px solid var(--mint);
+    }
+
+    .bubble {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.55;
+      pointer-events: none;
+    }
+
+    .bubble-1 {
+      width: 220px;
+      height: 220px;
+      background-color: var(--mint);
+      top: -50px;
+      left: -50px;
+    }
+
+    .bubble-2 {
+      width: 260px;
+      height: 260px;
+      background-color: var(--orange);
+      bottom: -70px;
+      right: -60px;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-title {
+      font-size: 3.2rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 0.75rem;
+      line-height: 1.15;
+    }
+
+    .hero-subtitle {
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 2rem;
+    }
+
+    .vibe-tags {
+      display: flex;
+      justify-content: center;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      padding: 0.6rem 1.4rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-transform: lowercase;
+      letter-spacing: 0.5px;
+    }
+
+    .tag-orange {
+      background-color: var(--orange);
+      color: var(--white);
+      box-shadow: 0 4px 12px rgba(252, 175, 80, 0.4);
+    }
+
+    .tag-mint {
+      background-color: var(--mint);
+      color: var(--dark);
+      box-shadow: 0 4px 12px rgba(168, 230, 207, 0.5);
+    }
+
+    .tag-dark {
+      background-color: var(--dark);
+      color: var(--white);
+    }
+
+    /* Content Layout */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3.5rem 1.5rem;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .card {
+      background: var(--white);
+      border: 3px solid var(--mint);
+      border-radius: 24px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+    }
+
+    .card-orange {
+      border-color: var(--orange);
+    }
+
+    .card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      color: var(--dark);
+      margin-bottom: 0.75rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: var(--dark);
+    }
+
+    /* Target Audience Banner */
+    .audience-card {
+      background: linear-gradient(135deg, var(--orange) 0%, #F59E0B 100%);
+      color: var(--white);
+      padding: 3rem 2rem;
+      border-radius: 28px;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(252, 175, 80, 0.3);
+    }
+
+    .audience-card h2 {
+      color: var(--white);
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .audience-card p {
+      color: var(--white);
+      font-size: 1.35rem;
+      font-weight: 600;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--dark);
+      color: var(--white);
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      margin-top: 4rem;
+    }
+
+    footer p {
+      color: var(--white);
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .ai-credit {
+      font-size: 0.9rem;
+      opacity: 0.85;
+    }
+
+    /* Responsive Mobile Design */
+    @media (max-width: 600px) {
+      header {
+        justify-content: center;
+      }
+
+      .hero-title {
+        font-size: 2.2rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1.15rem;
+      }
+
+      .audience-card h2 {
+        font-size: 1.6rem;
+      }
+
+      .audience-card p {
+        font-size: 1.15rem;
+      }
+
+      .card {
+        padding: 2rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header>
+    <a href="#" class="brand-logo">
+      <span class="brand-dot"></span>
+      Mohammad’s flavour drinks
+    </a>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="hero">
+    <div class="bubble bubble-1"></div>
+    <div class="bubble bubble-2"></div>
+    
+    <div class="hero-content">
+      <h1 class="hero-title">Mohammad’s flavour drinks</h1>
+      <p class="hero-subtitle">Flavoured drinks</p>
+      
+      <div class="vibe-tags">
+        <span class="tag tag-orange">fun</span>
+        <span class="tag tag-mint">thirsty</span>
+        <span class="tag tag-dark">yummy</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Area -->
+  <main class="container">
+    <div class="cards-grid">
+      <!-- Why Section -->
+      <div class="card card-orange">
+        <div class="card-icon">🍹</div>
+        <h2>Why I Do This</h2>
+        <p>Sell different types of flavoured drinks</p>
+      </div>
+
+      <!-- Made Section -->
+      <div class="card">
+        <div class="card-icon">🥤</div>
+        <h2>Things I've Made</h2>
+        <p>Flavoured drinks</p>
+      </div>
+    </div>
+
+    <!-- Audience Banner -->
+    <div class="audience-card">
+      <h2>Who It Is For</h2>
+      <p>IT IS FOR EVERYONE for all ages who like different types of flavoured drinks</p>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>Mohammad’s flavour drinks</p>
+    <p class="ai-credit">Made with help from AI.</p>
+  </footer>
+
+</body>
+</html>
