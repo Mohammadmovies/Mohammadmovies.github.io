@@ -31,6 +31,32 @@
       overflow-x: hidden;
     }
 
+    /* --- Animations --- */
+    @keyframes slideDown {
+      from { transform: translateY(-100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes floatBubble {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-25px) scale(1.05); }
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0.8); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes bounceVibe {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
     /* Header Navigation */
     header {
       background-color: var(--white);
@@ -42,6 +68,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      animation: slideDown 0.6s ease-out forwards;
     }
 
     .brand-logo {
@@ -52,6 +79,11 @@
       display: flex;
       align-items: center;
       gap: 0.6rem;
+      transition: transform 0.3s ease;
+    }
+    
+    .brand-logo:hover {
+      transform: scale(1.05);
     }
 
     .brand-dot {
@@ -60,9 +92,10 @@
       background-color: var(--orange);
       border-radius: 50%;
       display: inline-block;
+      animation: popIn 0.5s ease-out 0.5s backwards;
     }
 
-    /* Hero Section - Starbucks inspired bold bubble backdrop */
+    /* Hero Section */
     .hero {
       background: linear-gradient(135deg, var(--light-mint) 0%, var(--light-orange) 100%);
       padding: 5rem 1.5rem;
@@ -85,6 +118,7 @@
       background-color: var(--mint);
       top: -50px;
       left: -50px;
+      animation: floatBubble 6s ease-in-out infinite;
     }
 
     .bubble-2 {
@@ -93,6 +127,7 @@
       background-color: var(--orange);
       bottom: -70px;
       right: -60px;
+      animation: floatBubble 8s ease-in-out infinite reverse;
     }
 
     .hero-content {
@@ -100,10 +135,11 @@
       margin: 0 auto;
       position: relative;
       z-index: 2;
+      animation: fadeInUp 0.8s ease-out forwards;
     }
 
     .hero-title {
-      font-size: 3.2rem;
+      font-size: 3.5rem;
       font-weight: 700;
       color: var(--dark);
       margin-bottom: 0.75rem;
@@ -111,7 +147,7 @@
     }
 
     .hero-subtitle {
-      font-size: 1.35rem;
+      font-size: 1.5rem;
       font-weight: 600;
       color: var(--dark);
       margin-bottom: 2rem;
@@ -120,7 +156,7 @@
     .vibe-tags {
       display: flex;
       justify-content: center;
-      gap: 0.8rem;
+      gap: 1rem;
       flex-wrap: wrap;
     }
 
@@ -131,23 +167,33 @@
       font-size: 1.1rem;
       text-transform: lowercase;
       letter-spacing: 0.5px;
+      opacity: 0;
+      animation: popIn 0.5s ease-out forwards;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    
+    .tag:hover {
+      transform: translateY(-5px) scale(1.1);
     }
 
     .tag-orange {
       background-color: var(--orange);
       color: var(--white);
       box-shadow: 0 4px 12px rgba(252, 175, 80, 0.4);
+      animation-delay: 0.4s;
     }
 
     .tag-mint {
       background-color: var(--mint);
       color: var(--dark);
       box-shadow: 0 4px 12px rgba(168, 230, 207, 0.5);
+      animation-delay: 0.6s;
     }
 
     .tag-dark {
       background-color: var(--dark);
       color: var(--white);
+      animation-delay: 0.8s;
     }
 
     /* Content Layout */
@@ -170,21 +216,36 @@
       border-radius: 24px;
       padding: 2.5rem 2rem;
       text-align: center;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      opacity: 0;
+      animation: fadeInUp 0.8s ease-out forwards;
+      animation-delay: 0.4s;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
     .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 15px 30px rgba(168, 230, 207, 0.4);
+      border-color: var(--orange);
     }
 
     .card-orange {
       border-color: var(--orange);
+      animation-delay: 0.2s;
+    }
+    
+    .card-orange:hover {
+      box-shadow: 0 15px 30px rgba(252, 175, 80, 0.4);
     }
 
     .card-icon {
-      font-size: 2.5rem;
+      font-size: 3rem;
       margin-bottom: 1rem;
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+    
+    .card:hover .card-icon {
+      animation: bounceVibe 1s ease infinite;
     }
 
     h2 {
@@ -206,6 +267,14 @@
       border-radius: 28px;
       text-align: center;
       box-shadow: 0 10px 25px rgba(252, 175, 80, 0.3);
+      opacity: 0;
+      animation: fadeInUp 0.8s ease-out forwards;
+      animation-delay: 0.6s;
+      transition: transform 0.3s ease;
+    }
+    
+    .audience-card:hover {
+      transform: scale(1.02);
     }
 
     .audience-card h2 {
@@ -245,23 +314,18 @@
       header {
         justify-content: center;
       }
-
       .hero-title {
-        font-size: 2.2rem;
+        font-size: 2.5rem;
       }
-
       .hero-subtitle {
-        font-size: 1.15rem;
+        font-size: 1.2rem;
       }
-
       .audience-card h2 {
         font-size: 1.6rem;
       }
-
       .audience-card p {
         font-size: 1.15rem;
       }
-
       .card {
         padding: 2rem 1.5rem;
       }
