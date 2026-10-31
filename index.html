@@ -12,9 +12,7 @@
       --orange: #FCAF50;
       --mint: #A8E6CF;
       --white: #FFFFFF;
-      --dark: #232D3F;
-      --light-mint: #F2FAF6;
-      --light-orange: #FFF8EE;
+      --text: #1a1a1a;
     }
 
     * {
@@ -26,368 +24,433 @@
     body {
       font-family: 'Signika', sans-serif;
       background-color: var(--white);
-      color: var(--dark);
-      line-height: 1.6;
+      color: var(--text);
       overflow-x: hidden;
     }
 
-    /* --- Animations --- */
-    @keyframes slideDown {
-      from { transform: translateY(-100%); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
+    /* --- Advanced Animations --- */
+    @keyframes morph {
+      0% { border-radius: 40% 60% 70% 30% / 40% 40% 60% 50%; }
+      34% { border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%; }
+      67% { border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%; }
+      100% { border-radius: 40% 60% 70% 30% / 40% 40% 60% 50%; }
     }
 
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
 
-    @keyframes floatBubble {
-      0%, 100% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-25px) scale(1.05); }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
 
-    @keyframes popIn {
-      0% { transform: scale(0.8); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
+    @keyframes slideUpFade {
+      0% { opacity: 0; transform: translateY(50px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
 
-    @keyframes bounceVibe {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
     }
 
-    /* Header Navigation */
-    header {
-      background-color: var(--white);
-      padding: 1.25rem 2rem;
-      position: sticky;
+    /* --- Navigation --- */
+    nav {
+      position: fixed;
+      width: 100%;
       top: 0;
-      z-index: 100;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 1.5rem 2rem;
+      z-index: 1000;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      animation: slideDown 0.6s ease-out forwards;
+      border-bottom: 2px solid var(--mint);
     }
 
-    .brand-logo {
-      font-size: 1.4rem;
+    .logo {
+      font-size: 1.5rem;
       font-weight: 700;
-      color: var(--dark);
-      text-decoration: none;
+      color: var(--text);
+      text-transform: uppercase;
+      letter-spacing: -0.5px;
       display: flex;
       align-items: center;
-      gap: 0.6rem;
-      transition: transform 0.3s ease;
-    }
-    
-    .brand-logo:hover {
-      transform: scale(1.05);
+      gap: 10px;
     }
 
-    .brand-dot {
-      width: 14px;
-      height: 14px;
-      background-color: var(--orange);
+    .logo-dot {
+      width: 12px;
+      height: 12px;
+      background: var(--orange);
       border-radius: 50%;
-      display: inline-block;
-      animation: popIn 0.5s ease-out 0.5s backwards;
+      animation: pulse 2s infinite;
     }
 
-    /* Hero Section */
+    /* --- Hero Section --- */
     .hero {
-      background: linear-gradient(135deg, var(--light-mint) 0%, var(--light-orange) 100%);
-      padding: 5rem 1.5rem;
-      text-align: center;
+      min-height: 100vh;
+      background-color: var(--mint);
+      display: flex;
+      align-items: center;
+      padding: 6rem 2rem 2rem;
       position: relative;
       overflow: hidden;
-      border-bottom: 4px solid var(--mint);
-    }
-
-    .bubble {
-      position: absolute;
-      border-radius: 50%;
-      opacity: 0.55;
-      pointer-events: none;
-    }
-
-    .bubble-1 {
-      width: 220px;
-      height: 220px;
-      background-color: var(--mint);
-      top: -50px;
-      left: -50px;
-      animation: floatBubble 6s ease-in-out infinite;
-    }
-
-    .bubble-2 {
-      width: 260px;
-      height: 260px;
-      background-color: var(--orange);
-      bottom: -70px;
-      right: -60px;
-      animation: floatBubble 8s ease-in-out infinite reverse;
     }
 
     .hero-content {
-      max-width: 800px;
+      max-width: 1200px;
       margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
       position: relative;
       z-index: 2;
-      animation: fadeInUp 0.8s ease-out forwards;
     }
 
-    .hero-title {
-      font-size: 3.5rem;
+    .hero-text {
+      animation: slideUpFade 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .hero h1 {
+      font-size: clamp(3.5rem, 8vw, 6.5rem);
+      line-height: 1;
       font-weight: 700;
-      color: var(--dark);
-      margin-bottom: 0.75rem;
-      line-height: 1.15;
+      margin-bottom: 1.5rem;
+      letter-spacing: -2px;
+      color: var(--text);
     }
 
-    .hero-subtitle {
-      font-size: 1.5rem;
+    .hero p {
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
       font-weight: 600;
-      color: var(--dark);
-      margin-bottom: 2rem;
+      color: var(--text);
+      opacity: 0.9;
     }
 
-    .vibe-tags {
+    /* Liquid Drink Graphic */
+    .hero-graphic {
+      position: relative;
+      width: 100%;
+      height: 500px;
       display: flex;
       justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .tag {
-      padding: 0.6rem 1.4rem;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 1.1rem;
-      text-transform: lowercase;
-      letter-spacing: 0.5px;
+      align-items: center;
+      animation: slideUpFade 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
       opacity: 0;
-      animation: popIn 0.5s ease-out forwards;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-    
-    .tag:hover {
-      transform: translateY(-5px) scale(1.1);
     }
 
-    .tag-orange {
-      background-color: var(--orange);
+    .liquid-blob {
+      width: 400px;
+      height: 400px;
+      background: var(--orange);
+      box-shadow: inset 20px 20px 40px rgba(255, 255, 255, 0.4),
+                  0 20px 50px rgba(252, 175, 80, 0.5);
+      animation: morph 8s ease-in-out infinite, spin 20s linear infinite;
+      position: absolute;
+    }
+
+    .liquid-blob::after {
+      content: '';
+      position: absolute;
+      top: 10%;
+      left: 10%;
+      width: 80%;
+      height: 80%;
+      background: var(--white);
+      border-radius: 50%;
+      opacity: 0.2;
+      animation: morph 6s ease-in-out infinite reverse;
+    }
+
+    /* --- Marquee Section --- */
+    .marquee-container {
+      background: var(--orange);
+      padding: 1.5rem 0;
+      overflow: hidden;
+      white-space: nowrap;
+      border-top: 4px solid var(--text);
+      border-bottom: 4px solid var(--text);
+      position: relative;
+      z-index: 10;
+      transform: rotate(-2deg);
+      margin: -2rem -1rem 4rem -1rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .marquee-track {
+      display: inline-block;
+      animation: marquee 15s linear infinite;
+    }
+
+    .marquee-text {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--text);
+      text-transform: uppercase;
+      padding: 0 2rem;
+    }
+
+    /* --- Menu Section --- */
+    .menu-section {
+      max-width: 1200px;
+      margin: 6rem auto;
+      padding: 0 2rem;
+    }
+
+    .menu-section h2 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      text-transform: uppercase;
+      letter-spacing: -1px;
+      margin-bottom: 3rem;
+      text-align: center;
+      color: var(--text);
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .menu-item {
+      background: var(--white);
+      border: 4px solid var(--text);
+      border-radius: 30px;
+      padding: 2.5rem 2rem;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s;
+    }
+
+    .menu-item:hover {
+      transform: translateY(-8px);
+      box-shadow: 12px 12px 0 var(--mint);
+    }
+
+    .menu-item:nth-child(even):hover {
+      box-shadow: 12px 12px 0 var(--orange);
+    }
+
+    .menu-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+      line-height: 1.2;
+    }
+
+    .menu-ingredients {
+      font-size: 1.1rem;
+      color: var(--text);
+      opacity: 0.8;
+      margin-bottom: 1.5rem;
+      line-height: 1.4;
+    }
+
+    .menu-price {
+      display: inline-block;
+      background: var(--text);
       color: var(--white);
-      box-shadow: 0 4px 12px rgba(252, 175, 80, 0.4);
-      animation-delay: 0.4s;
+      font-weight: 700;
+      font-size: 1.2rem;
+      padding: 0.5rem 1.2rem;
+      border-radius: 50px;
     }
 
-    .tag-mint {
+    /* --- Big Bento Layout --- */
+    .bento {
+      max-width: 1200px;
+      margin: 4rem auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    .bento-card {
+      padding: 4rem 3rem;
+      border-radius: 40px;
+      border: 4px solid var(--text);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s;
+    }
+
+    .bento-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 15px 15px 0 var(--text);
+    }
+
+    .bento-card h2 {
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+      opacity: 0.8;
+    }
+
+    .bento-card p {
+      font-size: 2.5rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .card-made {
+      background-color: var(--white);
+    }
+
+    .card-why {
       background-color: var(--mint);
-      color: var(--dark);
-      box-shadow: 0 4px 12px rgba(168, 230, 207, 0.5);
-      animation-delay: 0.6s;
     }
 
-    .tag-dark {
-      background-color: var(--dark);
-      color: var(--white);
-      animation-delay: 0.8s;
+    .card-audience {
+      grid-column: 1 / -1;
+      background-color: var(--orange);
+      text-align: center;
+      padding: 6rem 3rem;
     }
 
-    /* Content Layout */
-    .container {
+    .card-audience h2 {
+      color: var(--text);
+    }
+
+    .card-audience p {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      color: var(--text);
       max-width: 900px;
       margin: 0 auto;
-      padding: 3.5rem 1.5rem;
     }
 
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      margin-bottom: 2.5rem;
-    }
-
-    .card {
-      background: var(--white);
-      border: 3px solid var(--mint);
-      border-radius: 24px;
-      padding: 2.5rem 2rem;
-      text-align: center;
-      opacity: 0;
-      animation: fadeInUp 0.8s ease-out forwards;
-      animation-delay: 0.4s;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-
-    .card:hover {
-      transform: translateY(-10px) scale(1.03);
-      box-shadow: 0 15px 30px rgba(168, 230, 207, 0.4);
-      border-color: var(--orange);
-    }
-
-    .card-orange {
-      border-color: var(--orange);
-      animation-delay: 0.2s;
-    }
-    
-    .card-orange:hover {
-      box-shadow: 0 15px 30px rgba(252, 175, 80, 0.4);
-    }
-
-    .card-icon {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      display: inline-block;
-      transition: transform 0.3s ease;
-    }
-    
-    .card:hover .card-icon {
-      animation: bounceVibe 1s ease infinite;
-    }
-
-    h2 {
-      font-size: 1.8rem;
-      color: var(--dark);
-      margin-bottom: 0.75rem;
-    }
-
-    p {
-      font-size: 1.2rem;
-      color: var(--dark);
-    }
-
-    /* Target Audience Banner */
-    .audience-card {
-      background: linear-gradient(135deg, var(--orange) 0%, #F59E0B 100%);
-      color: var(--white);
-      padding: 3rem 2rem;
-      border-radius: 28px;
-      text-align: center;
-      box-shadow: 0 10px 25px rgba(252, 175, 80, 0.3);
-      opacity: 0;
-      animation: fadeInUp 0.8s ease-out forwards;
-      animation-delay: 0.6s;
-      transition: transform 0.3s ease;
-    }
-    
-    .audience-card:hover {
-      transform: scale(1.02);
-    }
-
-    .audience-card h2 {
-      color: var(--white);
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-
-    .audience-card p {
-      color: var(--white);
-      font-size: 1.35rem;
-      font-weight: 600;
-    }
-
-    /* Footer */
+    /* --- Footer --- */
     footer {
-      background-color: var(--dark);
+      background: var(--text);
       color: var(--white);
+      padding: 4rem 2rem;
       text-align: center;
-      padding: 2.5rem 1.5rem;
-      margin-top: 4rem;
     }
 
-    footer p {
-      color: var(--white);
-      font-size: 1rem;
-      margin-bottom: 0.4rem;
+    .footer-brand {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--orange);
     }
 
-    .ai-credit {
+    .ai-badge {
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+      background: var(--mint);
+      color: var(--text);
+      border-radius: 50px;
+      font-weight: 600;
+      margin-top: 2rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
       font-size: 0.9rem;
-      opacity: 0.85;
     }
 
-    /* Responsive Mobile Design */
-    @media (max-width: 600px) {
-      header {
-        justify-content: center;
+    /* --- Mobile Responsive --- */
+    @media (max-width: 900px) {
+      .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
       }
-      .hero-title {
-        font-size: 2.5rem;
+      
+      .liquid-blob {
+        width: 300px;
+        height: 300px;
       }
-      .hero-subtitle {
-        font-size: 1.2rem;
+
+      .bento {
+        grid-template-columns: 1fr;
       }
-      .audience-card h2 {
-        font-size: 1.6rem;
+
+      .bento-card {
+        padding: 3rem 2rem;
       }
-      .audience-card p {
-        font-size: 1.15rem;
-      }
-      .card {
-        padding: 2rem 1.5rem;
+
+      .card-audience {
+        padding: 4rem 2rem;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Top Navigation Header -->
-  <header>
-    <a href="#" class="brand-logo">
-      <span class="brand-dot"></span>
-      Mohammad’s flavour drinks
-    </a>
-  </header>
+  <nav>
+    <div class="logo">
+      <span class="logo-dot"></span>
+      Mohammad’s
+    </div>
+  </nav>
 
-  <!-- Hero Banner -->
   <section class="hero">
-    <div class="bubble bubble-1"></div>
-    <div class="bubble bubble-2"></div>
-    
     <div class="hero-content">
-      <h1 class="hero-title">Mohammad’s flavour drinks</h1>
-      <p class="hero-subtitle">Flavoured drinks</p>
-      
-      <div class="vibe-tags">
-        <span class="tag tag-orange">fun</span>
-        <span class="tag tag-mint">thirsty</span>
-        <span class="tag tag-dark">yummy</span>
+      <div class="hero-text">
+        <h1>Mohammad’s flavour drinks</h1>
+        <p>Flavoured drinks</p>
+      </div>
+      <div class="hero-graphic">
+        <div class="liquid-blob"></div>
       </div>
     </div>
   </section>
 
-  <!-- Main Content Area -->
-  <main class="container">
-    <div class="cards-grid">
-      <!-- Why Section -->
-      <div class="card card-orange">
-        <div class="card-icon">🍹</div>
-        <h2>Why I Do This</h2>
-        <p>Sell different types of flavoured drinks</p>
+  <div class="marquee-container">
+    <div class="marquee-track">
+      <span class="marquee-text">fun ✦ thirsty ✦ yummy ✦ fun ✦ thirsty ✦ yummy ✦ fun ✦ thirsty ✦ yummy ✦ fun ✦ thirsty ✦ yummy ✦</span>
+      <span class="marquee-text">fun ✦ thirsty ✦ yummy ✦ fun ✦ thirsty ✦ yummy ✦ fun ✦ thirsty ✦ yummy ✦ fun ✦ thirsty ✦ yummy ✦</span>
+    </div>
+  </div>
+
+  <!-- New Menu Section -->
+  <section class="menu-section">
+    <h2>Drink Menu</h2>
+    <div class="menu-grid">
+      
+      <div class="menu-item">
+        <div class="menu-title">[Drink Name 1]</div>
+        <div class="menu-ingredients">[Main Ingredient 1], [Main Ingredient 2]</div>
+        <div class="menu-price">[Price]</div>
       </div>
 
-      <!-- Made Section -->
-      <div class="card">
-        <div class="card-icon">🥤</div>
-        <h2>Things I've Made</h2>
-        <p>Flavoured drinks</p>
+      <div class="menu-item">
+        <div class="menu-title">[Drink Name 2]</div>
+        <div class="menu-ingredients">[Main Ingredient 1], [Main Ingredient 2]</div>
+        <div class="menu-price">[Price]</div>
       </div>
+
+      <div class="menu-item">
+        <div class="menu-title">[Drink Name 3]</div>
+        <div class="menu-ingredients">[Main Ingredient 1], [Main Ingredient 2]</div>
+        <div class="menu-price">[Price]</div>
+      </div>
+
+    </div>
+  </section>
+
+  <main class="bento">
+    <div class="bento-card card-made">
+      <h2>Things I've made</h2>
+      <p>Flavoured drinks</p>
     </div>
 
-    <!-- Audience Banner -->
-    <div class="audience-card">
-      <h2>Who It Is For</h2>
+    <div class="bento-card card-why">
+      <h2>Why I do this</h2>
+      <p>Sell different types of flavoured drinks</p>
+    </div>
+
+    <div class="bento-card card-audience">
+      <h2>Who it is for</h2>
       <p>IT IS FOR EVERYONE for all ages who like different types of flavoured drinks</p>
     </div>
   </main>
 
-  <!-- Footer -->
   <footer>
-    <p>Mohammad’s flavour drinks</p>
-    <p class="ai-credit">Made with help from AI.</p>
+    <div class="footer-brand">Mohammad’s flavour drinks</div>
+    <div class="ai-badge">Made with help from AI.</div>
   </footer>
 
 </body>
