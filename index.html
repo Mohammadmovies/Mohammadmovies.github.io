@@ -1,3 +1,4 @@
+HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -213,7 +214,7 @@
 
     .menu-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 2rem;
     }
 
@@ -223,6 +224,9 @@
       border-radius: 30px;
       padding: 2.5rem 2rem;
       transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .menu-item:hover {
@@ -258,6 +262,7 @@
       font-size: 1.2rem;
       padding: 0.5rem 1.2rem;
       border-radius: 50px;
+      align-self: flex-start;
     }
 
     /* --- Big Bento Layout --- */
@@ -405,27 +410,41 @@
     </div>
   </div>
 
-  <!-- New Menu Section -->
+  <!-- Updated Menu Section -->
   <section class="menu-section">
     <h2>Drink Menu</h2>
     <div class="menu-grid">
       
       <div class="menu-item">
-        <div class="menu-title">[Drink Name 1]</div>
-        <div class="menu-ingredients">[Main Ingredient 1], [Main Ingredient 2]</div>
-        <div class="menu-price">[Price]</div>
+        <div>
+          <div class="menu-title">Sunshine Sparkler</div>
+          <div class="menu-ingredients">Orange juice, lemon-lime soda, and peach nectar over ice.</div>
+        </div>
+        <div class="menu-price">$4.00</div>
       </div>
 
       <div class="menu-item">
-        <div class="menu-title">[Drink Name 2]</div>
-        <div class="menu-ingredients">[Main Ingredient 1], [Main Ingredient 2]</div>
-        <div class="menu-price">[Price]</div>
+        <div>
+          <div class="menu-title">Minty Melon Splash</div>
+          <div class="menu-ingredients">Muddled fresh watermelon chunks, mint leaves, lime juice, and sparkling water.</div>
+        </div>
+        <div class="menu-price">$4.50</div>
       </div>
 
       <div class="menu-item">
-        <div class="menu-title">[Drink Name 3]</div>
-        <div class="menu-ingredients">[Main Ingredient 1], [Main Ingredient 2]</div>
-        <div class="menu-price">[Price]</div>
+        <div>
+          <div class="menu-title">Berry Blast Punch</div>
+          <div class="menu-ingredients">Mixed frozen berries, cranberry juice, and sweet lemonade.</div>
+        </div>
+        <div class="menu-price">$5.00</div>
+      </div>
+      
+      <div class="menu-item">
+        <div>
+          <div class="menu-title">Vanilla Dream Cloud</div>
+          <div class="menu-ingredients">Milk, vanilla syrup, topped with whipped cream and caramel drizzle.</div>
+        </div>
+        <div class="menu-price">$5.50</div>
       </div>
 
     </div>
@@ -454,4 +473,4 @@
   </footer>
 
 </body>
-</html>
+</html
