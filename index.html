@@ -205,4 +205,284 @@
     .menu-section h2 {
       font-size: clamp(2.5rem, 5vw, 4rem);
       text-transform: uppercase;
-      letter-spacing: -1
+      letter-spacing: -1px;
+      margin-bottom: 3rem;
+      text-align: center;
+      color: var(--text);
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .menu-item {
+      background: var(--white);
+      border: 4px solid var(--text);
+      border-radius: 30px;
+      padding: 2.5rem 2rem;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+
+    .menu-item:hover {
+      transform: translateY(-8px);
+      box-shadow: 12px 12px 0 var(--mint);
+    }
+
+    .menu-item:nth-child(even):hover {
+      box-shadow: 12px 12px 0 var(--orange);
+    }
+
+    .menu-item-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 20px 20px 0 0;
+      margin-bottom: 1.5rem;
+    }
+
+    .menu-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+      line-height: 1.2;
+    }
+
+    .menu-ingredients {
+      font-size: 1.1rem;
+      color: var(--text);
+      opacity: 0.8;
+      margin-bottom: 1.5rem;
+      line-height: 1.4;
+    }
+
+    .menu-price {
+      display: inline-block;
+      background: var(--text);
+      color: var(--white);
+      font-weight: 700;
+      font-size: 1.2rem;
+      padding: 0.5rem 1.2rem;
+      border-radius: 50px;
+      align-self: flex-start;
+    }
+
+    /* --- Big Bento Layout --- */
+    .bento {
+      max-width: 1200px;
+      margin: 4rem auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    .bento-card {
+      padding: 4rem 3rem;
+      border-radius: 40px;
+      border: 4px solid var(--text);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s;
+    }
+
+    .bento-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 15px 15px 0 var(--text);
+    }
+
+    .bento-card h2 {
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+      opacity: 0.8;
+    }
+
+    .bento-card p {
+      font-size: 2.5rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .card-made {
+      background-color: var(--white);
+    }
+
+    .card-why {
+      background-color: var(--mint);
+    }
+
+    .card-audience {
+      grid-column: 1 / -1;
+      background-color: var(--orange);
+      text-align: center;
+      padding: 6rem 3rem;
+    }
+
+    .card-audience h2 {
+      color: var(--text);
+    }
+
+    .card-audience p {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      color: var(--text);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* --- Footer --- */
+    footer {
+      background: var(--text);
+      color: var(--white);
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .footer-brand {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--orange);
+    }
+
+    .ai-badge {
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+      background: var(--mint);
+      color: var(--text);
+      border-radius: 50px;
+      font-weight: 600;
+      margin-top: 2rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.9rem;
+    }
+
+    /* --- Mobile Responsive --- */
+    @media (max-width: 900px) {
+      .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+      }
+      
+      .liquid-blob {
+        width: 300px;
+        height: 300px;
+      }
+
+      .bento {
+        grid-template-columns: 1fr;
+      }
+
+      .bento-card {
+        padding: 3rem 2rem;
+      }
+
+      .card-audience {
+        padding: 4rem 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">
+      <span class="logo-dot"></span>
+      Mohammad’s
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1>Mohammad’s flavour drinks</h1>
+        <p>Flavoured drinks</p>
+      </div>
+      <div class="hero-graphic">
+        <div class="liquid-blob"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee-container">
+    <div class="marquee-track">
+      <span class="marquee-text">fun ✦ thirsty ✦ yummy ✦ fun ✦ thirsty ✦ yummy ✦ fun ✦ thirsty ✦ yummy ✦ fun ✦ thirsty ✦ yummy ✦</span>
+      <span class="marquee-text">fun ✦ thirsty ✦ yummy ✦ fun ✦ thirsty ✦ yummy ✦ fun ✦ thirsty ✦ yummy ✦ fun ✦ thirsty ✦ yummy ✦</span>
+    </div>
+  </div>
+
+  <!-- Updated Menu Section with ONLY Drinks Images -->
+  <section class="menu-section">
+    <h2>Drink Menu</h2>
+    <div class="menu-grid">
+      
+      <div class="menu-item">
+        <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=600&q=80" alt="Sunshine Sparkler - bright orange juice and lemon-lime soda over ice" class="menu-item-image">
+        <div>
+          <div class="menu-title">Sunshine Sparkler</div>
+          <div class="menu-ingredients">Orange juice, lemon-lime soda, and peach nectar over ice.</div>
+        </div>
+        <div class="menu-price">$4.00</div>
+      </div>
+
+      <div class="menu-item">
+        <img src="https://images.unsplash.com/photo-1587888637140-849b25d80ef9?auto=format&fit=crop&w=600&q=80" alt="Minty Melon Splash - fresh watermelon chunks and mint leaves with sparkling water" class="menu-item-image">
+        <div>
+          <div class="menu-title">Minty Melon Splash</div>
+          <div class="menu-ingredients">Muddled fresh watermelon chunks, mint leaves, lime juice, and sparkling water.</div>
+        </div>
+        <div class="menu-price">$4.50</div>
+      </div>
+
+      <div class="menu-item">
+        <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=600&q=80" alt="Berry Blast Punch - mixed frozen berries in cranberry juice and lemonade" class="menu-item-image">
+        <div>
+          <div class="menu-title">Berry Blast Punch</div>
+          <div class="menu-ingredients">Mixed frozen berries, cranberry juice, and sweet lemonade.</div>
+        </div>
+        <div class="menu-price">$5.00</div>
+      </div>
+      
+      <div class="menu-item">
+        <img src="https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=600&q=80" alt="Vanilla Dream Cloud - creamy milk and vanilla syrup with whipped cream and caramel drizzle" class="menu-item-image">
+        <div>
+          <div class="menu-title">Vanilla Dream Cloud</div>
+          <div class="menu-ingredients">Milk, vanilla syrup, topped with whipped cream and caramel drizzle.</div>
+        </div>
+        <div class="menu-price">$5.50</div>
+      </div>
+
+    </div>
+  </section>
+
+  <main class="bento">
+    <div class="bento-card card-made">
+      <h2>Things I've made</h2>
+      <p>Flavoured drinks</p>
+    </div>
+
+    <div class="bento-card card-why">
+      <h2>Why I do this</h2>
+      <p>Sell different types of flavoured drinks</p>
+    </div>
+
+    <div class="bento-card card-audience">
+      <h2>Who it is for</h2>
+      <p>IT IS FOR EVERYONE for all ages who like different types of flavoured drinks</p>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-brand">Mohammad’s flavour drinks</div>
+    <div class="ai-badge">Made with help from AI.</div>
+  </footer>
+
+</body>
+</html>
